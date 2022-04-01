@@ -36,6 +36,7 @@ public class OrderPage extends TestBase{
 	WebElement orderConfirmButton;
 	
 	@FindBy(xpath = "//div[@id = 'center_column'] // p")
+//	@FindBy(id = "#center_column")
 	WebElement messageBanner;
 	
 	
@@ -77,7 +78,7 @@ public class OrderPage extends TestBase{
 	
 	public String getTextFromMessageBanner() {
 		wdWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("p.alert.alert-warning")));
-		return messageBanner.getText();
+		return messageBanner.getAttribute("textContent");
 	}
 	
 

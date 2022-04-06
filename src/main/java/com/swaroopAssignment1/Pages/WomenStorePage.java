@@ -9,6 +9,7 @@ import com.swaroopAssignment1.BasePackage.TestBase;
 public class WomenStorePage extends TestBase{
 	public WomenStorePage() {
 		PageFactory.initElements(wd, this);
+		waitForDocumentCompleteState(10);
 	}
 	
 	@FindBy(css = "div.left-block [title = 'Faded Short Sleeve T-shirts']")
@@ -25,6 +26,11 @@ public class WomenStorePage extends TestBase{
 	
 	public void hoverMouseOnProduct() {
 		actions.moveToElement(imageForProduct).perform();
+	}
+	
+	public void hoverMouseOnProductUsingJavascript() {
+		jse.executeScript("arguments[0].scrollIntoView(true)", imageForProduct);
+		 
 	}
 	
 	public WomenStorePage clickAddToCartButton() {

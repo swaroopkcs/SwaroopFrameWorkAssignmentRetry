@@ -12,6 +12,7 @@ public class OrderDelConfirmPage extends TestBase{
 	
 	public OrderDelConfirmPage() {
 		PageFactory.initElements(wd, this);
+		waitForDocumentCompleteState(10);
 	}
 	
 	

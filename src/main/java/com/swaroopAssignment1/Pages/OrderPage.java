@@ -12,6 +12,7 @@ public class OrderPage extends TestBase{
 	
 	public OrderPage() {
 		PageFactory.initElements(wd, this);
+		waitForDocumentCompleteState(20);
 	}
 	
 	@FindBy (css = "i.icon-trash")
@@ -77,7 +78,8 @@ public class OrderPage extends TestBase{
 	}
 	
 	public String getTextFromMessageBanner() {
-		wdWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("p.alert.alert-warning")));
+//		wdWait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("p.alert.alert-warning")));
+//		return messageBanner.getText();
 		return messageBanner.getAttribute("textContent");
 	}
 	

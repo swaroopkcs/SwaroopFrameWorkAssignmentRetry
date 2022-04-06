@@ -1,8 +1,10 @@
 package com.swaroopAssignment1.Tests;
 
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import com.swaroopAssignment1.BasePackage.TestBase;
 import com.swaroopAssignment1.Pages.HomePage;
@@ -19,21 +21,26 @@ public class OrderConfirmationPageTest extends TestBase{
 	WomenStorePage womenStorePage;
 	OrderPage orderPage;
 	OrderConfirmationPage orderConfirmationPage;
+	SoftAssert sf;
 	
 	@BeforeMethod
 	public void setup() {
 		initialization();
+		sf = new SoftAssert();
 		HomePage homePage = new HomePage();
 		loginPage = homePage.clickSignInButton();
-		loginPage.enterEmail(prop.getProperty("emailAddress"));
-		loginPage.enterPassword(prop.getProperty("password"));
-		myAccountPage = loginPage.clickSigninButton();
+//		loginPage.enterEmail(prop.getProperty("emailAddress"));
+//		loginPage.enterPassword(prop.getProperty("password"));
+//		myAccountPage = loginPage.clickSigninButton();
+		myAccountPage = loginPage.loginTOThePortal(prop.getProperty("emailAddress"), prop.getProperty("password"));
+
 	}
 	
-	@Test
-	public void verifyUserisAbleToDelItemFromCart() {
+	@Test(priority = 5)
+	public void verifyUserisAbleToOrderItem() {	
 		womenStorePage = myAccountPage.clickWomenButton();
 		womenStorePage.hoverMouseOnProduct();
+//		womenStorePage.hoverMouseOnProductUsingJavascript();
 		womenStorePage.clickAddToCartButton();
 		orderPage = womenStorePage.clickProceedtoCheckOutButton();
 		orderPage.clickProceedToCheckoutButtonOnOrderPage();
@@ -43,8 +50,14 @@ public class OrderConfirmationPageTest extends TestBase{
 		orderPage.clickPaymentByWireMethod();
 		orderConfirmationPage = orderPage.clickIConfirmMyOrderButton();
 		String orderConfirmationMessage = orderConfirmationPage.getTextFromSuccessMessage();
-		Assert.assertEquals(orderConfirmationMessage, prop.getProperty("OrderConfirmMessage"));
+		sf.assertEquals(orderConfirmationMessage, prop.getProperty("OrderConfirmMessage"));
+		sf.assertAll();
 		
+	}
+	
+	@AfterMethod
+	public void closeBrowser() {
+		tearDown();
 	}
 
 }

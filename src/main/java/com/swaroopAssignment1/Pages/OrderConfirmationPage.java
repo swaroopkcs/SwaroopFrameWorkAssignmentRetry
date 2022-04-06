@@ -10,6 +10,7 @@ public class OrderConfirmationPage extends TestBase{
 	
 	public OrderConfirmationPage() {
 		PageFactory.initElements(wd, this);
+		waitForDocumentCompleteState(10);
 	}
 	
 	@FindBy (css = ".cheque-indent .dark")

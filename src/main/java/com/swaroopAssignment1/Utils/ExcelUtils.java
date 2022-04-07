@@ -1,7 +1,6 @@
 package com.swaroopAssignment1.Utils;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import org.apache.poi.xssf.usermodel.XSSFCell;
@@ -11,27 +10,26 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import com.swaroopAssignment1.BasePackage.TestBase;
 
-public class ExcelUtils extends TestBase{
-	
+public class ExcelUtils extends TestBase {
+
 	public static FileInputStream fi;
-	
 	public static XSSFWorkbook wbook;
 	public static XSSFSheet wSheet;
 	public static XSSFRow wRow;
 	public static XSSFCell wCell;
-	
+
 	public static int getRowCount(String filePath, String sheetName) throws IOException {
-		int rowCount;
+		int rowCount=0;
 		fi = new FileInputStream(filePath);
 		wbook = new XSSFWorkbook(fi);
 		wSheet = wbook.getSheet(sheetName);
 		rowCount = wSheet.getLastRowNum();
-		logger.info("The Row Count is: "+rowCount);
+		logger.info("The Row Count is: " + rowCount);
 		wbook.close();
 		fi.close();
 		return rowCount;
 	}
-	
+
 	public static int getCellCount(String xFile, String xSheet, int rowno) throws IOException {
 
 		int colCount;
@@ -41,7 +39,7 @@ public class ExcelUtils extends TestBase{
 		wRow = wSheet.getRow(rowno);
 		colCount = wRow.getLastCellNum();
 		wbook.close();
-		fi.close();		
+		fi.close();
 		System.out.println("The column count is: " + colCount);
 		return colCount;
 	}

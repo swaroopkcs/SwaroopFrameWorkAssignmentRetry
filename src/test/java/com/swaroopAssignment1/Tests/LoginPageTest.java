@@ -28,13 +28,13 @@ public class LoginPageTest extends TestBase{
 		homePage = new HomePage();
 	}
 	
-//	@Test(dataProvider = "InvalidLoginDataProvider")
-//	public void verifyUserIsNotAbletoSignInUsingInvalidOrBlankCredentials(String email, String password) {
-//		loginPage = homePage.clickSignInButton();
-//		loginPage = loginPage.loginWithInvalidCred(email, password);
-//		String errorMessage = loginPage.getErrorMessageForLogin();
-//		sf.assertEquals(errorMessage, prop.getProperty("errorMessage"));
-//	}
+	@Test(dataProvider = "InvalidLoginDataProvider")
+	public void verifyUserIsNotAbletoSignInUsingInvalidOrBlankCredentials(String email, String password) {
+		loginPage = homePage.clickSignInButton();
+		loginPage = loginPage.loginWithInvalidCred(email, password);
+		String errorMessage = loginPage.getErrorMessageForLogin();
+		sf.assertEquals(errorMessage, prop.getProperty("errorMessage"));
+	}
 	
 	
 	@Test (priority = 1)
@@ -55,9 +55,9 @@ public class LoginPageTest extends TestBase{
 	
 	@DataProvider(name = "InvalidLoginDataProvider")
 	public String[][] readAndGetDataFromExcelFile() throws IOException {
-		String filePath = "C:\\DESKTOP-UP3KE4H_E\\QA Testing\\AutomationPracticeData.xlsx";
-		int rows = ExcelUtils.getRowCount(filePath, "Sheet1");
-		int col = ExcelUtils.getCellCount(filePath, "Sheet1", rows);
+		String filePath = "C:\\Users\\swaro\\eclipse-workspace\\AutomationPracticeFramework\\src\\main\\java\\com\\swaroopAssignment1\\Config\\AutomationPracticeData.xlsx";
+		int rows = ExcelUtils.getRowCount(filePath, "Sheet2");
+		int col = ExcelUtils.getCellCount(filePath, "Sheet2", rows);
 		String[][] loginData = new String [rows][col];
 		for (int i=1; i<rows;i++) {
 			for(int j=0; j<col;j++) {

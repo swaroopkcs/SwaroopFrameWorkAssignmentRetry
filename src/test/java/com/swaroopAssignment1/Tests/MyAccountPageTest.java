@@ -31,16 +31,16 @@ public class MyAccountPageTest extends TestBase{
 		homePage = new HomePage();
 	}
 	
-//	@Test (dataProvider = "LoginDataProvider")
-//	public void verifyUserCanSignInUsingValidCredentials(String email, String password, String name) {
-//		loginPage = homePage.clickSignInButton();
-//		myAccountPage = loginPage.loginTOThePortal(email, password);
-//		String messageFromWebPage = myAccountPage.getTextFromMessage();
-//		String nameFromWebPage = myAccountPage.getNameFromLoginPage();
-//		sf.assertEquals(messageFromWebPage, prop.getProperty("LoginSuccessMessage","Success Message does not Match"));
-//		sf.assertEquals(nameFromWebPage, name, "Name displayed does not match");
-//		sf.assertAll();
-//	}
+	@Test (dataProvider = "LoginDataProvider")
+	public void verifyUserCanSignInUsingValidCredentials(String email, String password, String name) {
+		loginPage = homePage.clickSignInButton();
+		myAccountPage = loginPage.loginTOThePortal(email, password);
+		String messageFromWebPage = myAccountPage.getTextFromMessage();
+		String nameFromWebPage = myAccountPage.getNameFromLoginPage();
+		sf.assertEquals(messageFromWebPage, prop.getProperty("LoginSuccessMessage","Success Message does not Match"));
+		sf.assertEquals(nameFromWebPage, name, "Name displayed does not match");
+		sf.assertAll();
+	}
 	
 	@Test (priority = 1)
 	public void verifyUserCanSignInUsingValidCredentials() {
@@ -96,13 +96,13 @@ public class MyAccountPageTest extends TestBase{
 	
 	@DataProvider(name = "LoginDataProvider")
 	public String[][] readAndGetDataFromExcelFile() throws IOException {
-		String filePath = "C:\\DESKTOP-UP3KE4H_E\\QA Testing\\AutomationPracticeData.xlsx";
+		String filePath = "C:\\Users\\swaro\\eclipse-workspace\\AutomationPracticeFramework\\src\\main\\java\\com\\swaroopAssignment1\\Config\\AutomationPracticeData.xlsx";
 		int rows = ExcelUtils.getRowCount(filePath, "Sheet1");
 		int col = ExcelUtils.getCellCount(filePath, "Sheet1", rows);
 		String[][] loginData = new String [rows][col];
 		for (int i=1; i<rows;i++) {
 			for(int j=0; j<col;j++) {
-				loginData[i-1][j] = ExcelUtils.getCellData(filePath, "Sheet1", i, i);
+				loginData[i-1][j] = ExcelUtils.getCellData(filePath, "Sheet1", i, j);
 			}
 		}
 		return loginData;

@@ -7,6 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 import com.swaroopAssignment1.BasePackage.TestBase;
 import com.swaroopAssignment1.Utils.Utils;
 
+import bsh.util.Util;
+
 public class LoginPage extends TestBase {
 
 	public LoginPage() {
@@ -16,6 +18,9 @@ public class LoginPage extends TestBase {
 
 	@FindBy(id = "email")
 	WebElement emailInput;
+	
+	@FindBy( id ="email_create")
+	WebElement newEmailInput;
 
 	@FindBy(id = "passwd")
 	WebElement passwordInput;
@@ -44,7 +49,7 @@ public class LoginPage extends TestBase {
 	}
 	
 	public RegisterPage clickCreateAccountButton() {
-		Utils.javaScrpitClick(createAccountButton);
+		Utils.waitForElementToBeClickable(createAccountButton, 3).click();
 		return new RegisterPage();
 	}
 	
@@ -67,6 +72,11 @@ public class LoginPage extends TestBase {
 	
 	public String getErrorMessageForLogin() {
 		 return Utils.waitForElementToBeVisible(errorMessage, 5).getText();
+	}
+	
+	public void enterNewEmail() {
+		String newEmail = Utils.generateRandomEmail();
+		Utils.sendData(newEmailInput, newEmail);
 	}
 
 }

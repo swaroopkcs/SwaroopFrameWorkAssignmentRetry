@@ -41,6 +41,12 @@ public class Utils extends TestBase{
 
 	}
 	
+	public static String generateRandomPhone() {
+		String phoneNumber = RandomStringUtils.randomNumeric(10);
+		return phoneNumber;
+
+	}
+	
 	public static void takeSCreenShotOfFailedTestCase(String nameOfTestCase) {
 		String timeStamp = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 		File file = ((TakesScreenshot) wd).getScreenshotAs(OutputType.FILE);

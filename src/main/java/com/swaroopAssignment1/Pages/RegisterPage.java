@@ -80,7 +80,7 @@ public class RegisterPage extends TestBase{
 	@FindBy(id = "alias")
 	WebElement addressAliasInputInput;
 	
-	@FindBy(id = ".submit.clearfix .icon-chevron-right.right")
+	@FindBy(id = "submitAccount")
 	WebElement submitButton;
 	
 	public void clickRadioButton() {
@@ -88,8 +88,90 @@ public class RegisterPage extends TestBase{
 	}
 	
 	public void inputFirstName(String firstName) {
-		Utils.sendData(firstNameInput, null);
+		Utils.sendData(firstNameInput, firstName);
 	}
-
 	
+	public void inputLastName(String lastName) {
+		Utils.sendData(lastNameInput, lastName);
+	}
+	
+	public void inputPassword(String password) {
+		Utils.sendData(passwordInput, password);
+	}
+	
+	public void selectDay() {
+		Utils.selectFromDropDownUsingIndex(selectDateDropDown, 2);
+	}
+	
+	public void selectMonth() {
+		Utils.selectFromDropDownUsingIndex(selectMonthDropDown, 2);
+		}
+	
+	public void selectYear() {
+		Utils.selectFromDropDownUsingIndex(selectYearDropDown, 20);
+	}
+	
+	public void clickNewsLetterCheckBox() {
+		Utils.javaScrpitClick(newsLetterCheckBox);
+	}
+	
+	public void clickSpecialOfferCheckBox() {
+		Utils.javaScrpitClick(specialOffersCheckBox);
+	}
+	
+	public void inputFistNameForAddress(String firstName) {
+		Utils.sendData(addressFirstNameInput, firstName);
+	}
+	
+	public void inputLastNameForAddress(String lastName) {
+		Utils.sendData(addressLastNameInput, lastName);
+	}
+	
+	public void inputCompanyName(String companyName) {
+		Utils.sendData(companyNameInput, companyName);
+	}
+	
+	public void inputAddressLine1(String address1) {
+		Utils.sendData(addressLine1Input, address1);
+	}
+	
+	public void inputAddressLine2(String address2) {
+		Utils.sendData(addressLine2Input, address2);
+	}
+	
+	public void inputcityName(String cityName) {
+		Utils.sendData(cityNameInput, cityName);
+	}
+	
+	public void selectStateFromDropDown() {
+		Utils.selectFromDropDownUsingIndex(selectStateDropDown, 1);
+	}
+	
+	public void inputpostalCode(String postalCode) {
+		Utils.sendData(postalCodeInput, postalCode);
+	}
+	public void selectCountryFromDropDown() {
+		Utils.selectFromDropDownUsingIndex(selectCountryDropDownInput, 21);
+	}
+	
+	public void inputAdditionalInfo(String additionalInfo) {
+		Utils.sendData(additionalInfoFieldInput, additionalInfo);
+	}
+	
+	public void inputMobilePhone() {
+		Utils.sendData(mobilePhoneNumberInput, Utils.generateRandomPhone());
+	}
+	
+	public void inputHomePhone() {
+		Utils.sendData(homePhoneNumberInput, Utils.generateRandomPhone());
+	}
+	
+	public void inputAddressAlias(String addressAlias) {
+		Utils.sendData(addressAliasInputInput, addressAlias);
+	}
+	
+	public MyAccountPage clickRegisterButton() {
+		Utils.waitForElementToBeClickable(submitButton, 5).click();
+		return new MyAccountPage();
+	}
 }

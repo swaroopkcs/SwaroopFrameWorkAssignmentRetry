@@ -11,6 +11,7 @@ import org.testng.asserts.SoftAssert;
 import com.swaroopAssignment1.BasePackage.TestBase;
 import com.swaroopAssignment1.Pages.HomePage;
 import com.swaroopAssignment1.Pages.LoginPage;
+import com.swaroopAssignment1.Pages.RegisterPage;
 import com.swaroopAssignment1.Utils.ExcelUtils;
 
 public class LoginPageTest extends TestBase{
@@ -18,6 +19,7 @@ public class LoginPageTest extends TestBase{
 	LoginPage loginPage;
 	HomePage homePage;
 	SoftAssert sf;
+	RegisterPage registerPage;
 	
 	@BeforeMethod
 	public void setup() {
@@ -35,13 +37,16 @@ public class LoginPageTest extends TestBase{
 //	}
 	
 	
-	@Test (priority = 2)
+	@Test (priority = 1)
 	public void verifyUserIsNotAbletoSignInUsingInvalidOrBlankCredentials() {
 		loginPage = homePage.clickSignInButton();
 		loginPage = loginPage.loginWithInvalidCred(prop.getProperty("invalidEmail"), prop.getProperty("invalidPassword"));
 		String errorMessage = loginPage.getErrorMessageForLogin();
 		sf.assertEquals(errorMessage, prop.getProperty("errorMessage"));
 	}
+	
+	
+	
 	
 	@AfterMethod
 	public void closeBrowser() {

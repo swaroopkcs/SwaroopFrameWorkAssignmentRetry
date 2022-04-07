@@ -1,5 +1,6 @@
 package com.swaroopAssignment1.Tests;
 
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -32,6 +33,7 @@ public class HomePageTest extends TestBase{
 		
 	}
 	
+	@AfterMethod
 	public void closeBrowser() {
 		tearDown();
 	}

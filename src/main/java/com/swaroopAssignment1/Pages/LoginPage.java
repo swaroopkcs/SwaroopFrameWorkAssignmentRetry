@@ -45,6 +45,7 @@ public class LoginPage extends TestBase {
 	public MyAccountPage clickSigninButton() {
 //		signinButton.click();
 		Utils.javaScrpitClick(signinButton);
+		System.out.println("user is successfully logged in");
 		return new MyAccountPage();
 	}
 	

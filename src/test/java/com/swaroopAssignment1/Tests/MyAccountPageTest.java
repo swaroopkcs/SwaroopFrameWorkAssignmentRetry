@@ -31,8 +31,8 @@ public class MyAccountPageTest extends TestBase{
 		homePage = new HomePage();
 	}
 	
-	@Test (dataProvider = "LoginDataProvider")
-	public void verifyUserCanSignInUsingValidCredentials(String email, String password, String name) {
+	@Test ( enabled=false )
+	public void verifyUserCanSignInUsingValidCredentialsUsingExcel(String email, String password, String name) {
 		loginPage = homePage.clickSignInButton();
 		myAccountPage = loginPage.loginTOThePortal(email, password);
 		String messageFromWebPage = myAccountPage.getTextFromMessage();
@@ -94,7 +94,7 @@ public class MyAccountPageTest extends TestBase{
 	}
 	
 	
-	@DataProvider(name = "LoginDataProvider")
+//	@DataProvider(name = "LoginDataProvider")
 	public String[][] readAndGetDataFromExcelFile() throws IOException {
 		String filePath = "C:\\Users\\swaro\\eclipse-workspace\\AutomationPracticeFramework\\src\\main\\java\\com\\swaroopAssignment1\\Config\\AutomationPracticeData.xlsx";
 		int rows = ExcelUtils.getRowCount(filePath, "Sheet1");
@@ -102,7 +102,7 @@ public class MyAccountPageTest extends TestBase{
 		String[][] loginData = new String [rows][col];
 		for (int i=1; i<rows;i++) {
 			for(int j=0; j<col;j++) {
-				loginData[i-1][j] = ExcelUtils.getCellData(filePath, "Sheet1", i, j);
+				loginData[i][j] = ExcelUtils.getCellData(filePath, "Sheet1", i, j);
 			}
 		}
 		return loginData;

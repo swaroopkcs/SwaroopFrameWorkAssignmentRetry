@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.swaroopAssignment1.BasePackage.TestBase;
+import com.swaroopAssignment1.Utils.Utils;
 
 public class OrderConfirmationPage extends TestBase{
 	
@@ -17,7 +18,7 @@ public class OrderConfirmationPage extends TestBase{
 	WebElement successMessageOrderConfirmation;
 	
 	public String getTextFromSuccessMessage() {
-		return successMessageOrderConfirmation.getText();
+		return Utils.waitForElementToBeVisible(successMessageOrderConfirmation, 5).getText();
 	}
 
 }

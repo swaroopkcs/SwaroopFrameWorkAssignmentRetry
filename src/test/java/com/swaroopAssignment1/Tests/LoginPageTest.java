@@ -28,8 +28,8 @@ public class LoginPageTest extends TestBase{
 		homePage = new HomePage();
 	}
 	
-	@Test(dataProvider = "InvalidLoginDataProvider")
-	public void verifyUserIsNotAbletoSignInUsingInvalidOrBlankCredentials(String email, String password) {
+	@Test ( enabled=false )
+	public void verifyUserIsNotAbletoSignInUsingInvalidOrBlankCredentialsUsingExcel(String email, String password) {
 		loginPage = homePage.clickSignInButton();
 		loginPage = loginPage.loginWithInvalidCred(email, password);
 		String errorMessage = loginPage.getErrorMessageForLogin();
@@ -53,7 +53,7 @@ public class LoginPageTest extends TestBase{
 		tearDown();
 	}
 	
-	@DataProvider(name = "InvalidLoginDataProvider")
+//	@DataProvider(name = "InvalidLoginDataProvider")
 	public String[][] readAndGetDataFromExcelFile() throws IOException {
 		String filePath = "C:\\Users\\swaro\\eclipse-workspace\\AutomationPracticeFramework\\src\\main\\java\\com\\swaroopAssignment1\\Config\\AutomationPracticeData.xlsx";
 		int rows = ExcelUtils.getRowCount(filePath, "Sheet2");

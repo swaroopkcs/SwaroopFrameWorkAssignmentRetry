@@ -37,7 +37,7 @@ public class TestBase {
 		try {
 			prop = new Properties();
 			FileInputStream fs = new FileInputStream(
-					"C:\\Users\\swaro\\eclipse-workspace\\AutomationPracticeFramework\\src\\main\\java\\com\\swaroopAssignment1\\Config\\Config.Properties");
+					"src//main//java//com//swaroopAssignment1//Config//Config.Properties");
 			prop.load(fs);
 		} catch (IOException e) {
 			e.printStackTrace();

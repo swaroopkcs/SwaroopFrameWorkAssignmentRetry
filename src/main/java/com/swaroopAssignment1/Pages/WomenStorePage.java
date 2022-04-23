@@ -45,7 +45,7 @@ public class WomenStorePage extends TestBase{
 	
 	public OrderPage clickProceedtoCheckOutButton() {
 		proceedToCheckoutButton.click();
-		System.out.println("Order is sccessfully Checked out! Be ready!");
+		System.out.println("Order is sccessfully Checked out! Be ready!!");
 		return new OrderPage();
 	}
 	

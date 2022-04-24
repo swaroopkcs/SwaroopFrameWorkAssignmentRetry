@@ -172,6 +172,7 @@ public class RegisterPage extends TestBase{
 	
 	public MyAccountPage clickRegisterButton() {
 		Utils.waitForElementToBeClickable(submitButton, 5).click();
+		System.out.println("registration successful");
 		return new MyAccountPage();
 	}
 }

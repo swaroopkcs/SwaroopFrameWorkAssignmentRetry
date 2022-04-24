@@ -36,6 +36,7 @@ public class WomenStorePage extends TestBase{
 	public WomenStorePage clickAddToCartButton() {
 		addToCartButton.click();
 		return new WomenStorePage();
+		
 	}
 	
 	public String getTextFromSuccessMessage() {
@@ -44,6 +45,7 @@ public class WomenStorePage extends TestBase{
 	
 	public OrderPage clickProceedtoCheckOutButton() {
 		proceedToCheckoutButton.click();
+		System.out.println("Order is sccessfully Checked out! Be ready!!");
 		return new OrderPage();
 	}
 	
